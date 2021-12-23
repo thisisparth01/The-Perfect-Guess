@@ -1,0 +1,50 @@
+import random
+i = random.randint(1,20)
+z=0
+
+def loop_logic(z):
+
+        while z==1:
+            
+            guess=0
+            print('\nDo you want to play again?')
+            n=input()
+
+            if n=='n' or n=='N' or n=='no' or n=='No' or n=='NO':
+                break
+            logic()
+
+        print('Thanks for playing our game!')
+            
+def logic():
+    guess=0
+    
+    print("THE PERFECT GUESS\nTake a guess between 1 to 20")
+    while guess<5:
+
+        w = int(input(':'))
+        while w<1 or w>20:
+            print('Invalid Input!\nPlease enter a valid input')
+            w = int(input(':'))
+        
+        guess+=1
+    
+        if w!=i:
+            if (i-w) >5:
+                print('Your guess is too low')
+                
+            elif (((i-w) < 4) and ((i-w) > (-4))) or (((w-i) < 4) and ((w-i) > (-4))):
+                print('You are very near to the number')
+                
+            elif (w-i) >5:
+                print('Your guess is too high')
+        else:
+            if w==i:
+                print("Woohoo!, Your guess is correct \nYou took ",guess,"number of guesses \nthe number was: ",i)
+            
+            loop_logic(1)
+            
+    print('\nSorry 5 guesses are finished!, YOU LOSE\nthe number was: ',i)
+    loop_logic(1)
+
+logic()
