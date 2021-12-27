@@ -1,7 +1,5 @@
 import random
-i = random.randint(1,20)
 z=0
-
 def loop_logic(z):
 
         while z==1:
@@ -14,37 +12,59 @@ def loop_logic(z):
                 break
             logic()
 
-        print('Thanks for playing our game!')
-            
+        print('Thanks for playing our game! \U0001F600')
+        z=0
 def logic():
+
+    i = random.randint(1,100)
     guess=0
     
-    print("THE PERFECT GUESS\nTake a guess between 1 to 20")
-    while guess<5:
+    print("THE PERFECT GUESS \U0001F600\nTake a guess between 1 to 100")
+    while guess<7:
 
         w = int(input(':'))
-        while w<1 or w>20:
+        while w<1 or w>100:
             print('Invalid Input!\nPlease enter a valid input')
             w = int(input(':'))
         
         guess+=1
     
         if w!=i:
-            if (i-w) >5:
-                print('Your guess is too low')
+
+            if ((i-w) >12) and ((i-w) <35):
+                print('Your guess is low')
+            elif (i-w) >=35:
+                print('Your guess is too much low')
                 
-            elif (((i-w) < 4) and ((i-w) > (-4))) or (((w-i) < 4) and ((w-i) > (-4))):
+            elif (((i-w) < 3) and ((i-w) > (-3))) or (((w-i) < 3) and ((w-i) > (-3))):
                 print('You are very near to the number')
+            elif (((i-w) < 7) and ((i-w) > (-7))) or (((w-i) < 7) and ((w-i) > (-7))):
+                    print('You are little near to the number!')
                 
-            elif (w-i) >5:
-                print('Your guess is too high')
+            elif ((w-i) >12)and ((w-i) <35):
+                print('Your guess is high')
+            elif (w-i) >=35:
+                print('Your guess is too much high')
+            else:
+                print('No hints for this one')
+
         else:
+          
+            if guess<3:
+                print("You are Alien!")
+            elif guess>=3 and guess<6:
+                print("Excellent!!")
+            elif guess>5 and guess<8:
+                print("Just died!")
+
             if w==i:
-                print("Woohoo!, Your guess is correct \nYou took ",guess,"number of guesses \nthe number was: ",i)
+                print("Woohoo!, Your guess is correct \U0001F600\nYou took",guess,
+                      "number of guesses.\nthe number was: ",i)
+                loop_logic(1)
+                break
             
-            loop_logic(1)
-            
-    print('\nSorry 5 guesses are finished!, YOU LOSE\nthe number was: ',i)
-    loop_logic(1)
+    if guess >=7:
+        print('\nSorry 7 guesses are finished!, YOU LOSE \nthe number was: ',i)
+        loop_logic(1)
 
 logic()
